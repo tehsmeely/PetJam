@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/jar_tall_mask.png-a44d8a21622ba994d48c91e35d31bd92.stex"
+path="res://.import/mouth.png-8cc54104df336c4750288e00cb2bee38.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jar_tall_mask.png"
-dest_files=[ "res://.import/jar_tall_mask.png-a44d8a21622ba994d48c91e35d31bd92.stex" ]
+source_file="res://assets/mouth.png"
+dest_files=[ "res://.import/mouth.png-8cc54104df336c4750288e00cb2bee38.stex" ]
 
 [params]
 
