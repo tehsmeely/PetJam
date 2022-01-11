@@ -33,6 +33,7 @@ func _process(delta):
 
 func boost(boost_velocity: float) -> void:
 	self.velocity += boost_velocity
+	self.health_pct = clamp(self.health_pct - 20, 0.0, 100.0)
 
 
 func get_growth_rate() -> float:
@@ -45,6 +46,20 @@ func get_growth_rate() -> float:
 			return 0.0
 		HealthZone.BAD:
 			return -1.0
+		_:
+			return 0.0
+
+
+func get_mouth_mode() -> float:
+	match self.health_zone:
+		HealthZone.GOLD:
+			return 0.0
+		HealthZone.GOOD:
+			return 1.0
+		HealthZone.FINE:
+			return 2.0
+		HealthZone.BAD:
+			return 3.0
 		_:
 			return 0.0
 

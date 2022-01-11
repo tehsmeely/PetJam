@@ -63,11 +63,12 @@ func set_fill_level_pct(pct: float) -> void:
 	eyes.position.y = eye_top_offset_max * (pct / 100.0)
 	mouth.position.y = mouth_top_offset_max * (pct / 100.0)
 
-	var mouth_mode = 0
-	if (35 > pct and pct > 20) or (pct > 85 and pct < 95):
-		mouth_mode = 1
-	elif pct <= 20 or pct >= 95:
-		mouth_mode = 2
+	#var mouth_mode = 0
+	#if (35 > pct and pct > 20) or (pct > 85 and pct < 95):
+	#	mouth_mode = 1
+	#elif pct <= 20 or pct >= 95:
+	#	mouth_mode = 2
+	var mouth_mode = health.get_mouth_mode()
 
 	mouth.texture.region = Rect2(Vector2(mouth_mode * 64, 0), mouth.texture.region.size)
 
