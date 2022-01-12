@@ -137,3 +137,4 @@ __meta__ = {
 }
 
 [node name="CameraPos" type="Position2D" parent="."]
+position = Vector2( -69, 0 )

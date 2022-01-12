@@ -70,6 +70,7 @@ scale = Vector2( 2, 2 )
 position = Vector2( 1710, 187 )
 
 [node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 337, 169 )
 current = true
 smoothing_speed = 3.0
 
