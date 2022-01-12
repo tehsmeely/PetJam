@@ -16,17 +16,17 @@ var bread_count = 0 setget _set_bread_count
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var _err = debug_spawn_button.connect("pressed", self, "_spawn_bread")
+	var _err = debug_spawn_button.connect("pressed", self, "spawn_bread")
 	var _err2 = debug_sell_button.connect("pressed", self, "_sell_bread")
 	_update_label()
 
 
 func initialise(init_bread_count: int) -> void:
 	for _i in range(init_bread_count):
-		self._spawn_bread()
+		self.spawn_bread()
 
 
-func _spawn_bread():
+func spawn_bread():
 	var instance = bread_scene.instance()
 	var offset = bread_count * bread_offset
 	bread_start_point.add_child(instance)

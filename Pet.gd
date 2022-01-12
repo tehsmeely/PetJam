@@ -42,6 +42,8 @@ func feed() -> void:
 	self.fill_level_pct += 20.0
 	self.health.boost(20.0)
 
+func get_health_zone() -> int:
+	return self.health.health_zone
 
 func set_fill_level_pct(pct: float) -> void:
 	if pct > 100.0:

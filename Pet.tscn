@@ -50,7 +50,6 @@ atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 64, 64 )
 
 [node name="Pet" type="Node2D"]
-position = Vector2( -1, 0 )
 script = ExtResource( 5 )
 min_fill_eye_scale_threshold_pct = 30.0
 
@@ -66,15 +65,16 @@ texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 800, 800 )
 
-[node name="JarMask" type="Light2D" parent="."]
+[node name="FillMax" type="Position2D" parent="."]
+position = Vector2( 0, -67 )
+
+[node name="JarMask" type="Light2D" parent="FillMax"]
 light_mask = 513
+position = Vector2( 0, 67 )
 texture = ExtResource( 1 )
 mode = 3
 range_item_cull_mask = 512
 shadow_item_cull_mask = 512
-
-[node name="FillMax" type="Position2D" parent="."]
-position = Vector2( 0, -67 )
 
 [node name="FillMin" type="Position2D" parent="."]
 position = Vector2( 0, 68 )
@@ -89,7 +89,7 @@ scale = Vector2( 1, 0.5 )
 texture = ExtResource( 7 )
 
 [node name="EyesSprite" type="Sprite" parent="FillLevel"]
-position = Vector2( 0, 17 )
+position = Vector2( 1, 17 )
 texture = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FillLevel/EyesSprite"]
@@ -135,3 +135,5 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CameraPos" type="Position2D" parent="."]

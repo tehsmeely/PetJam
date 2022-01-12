@@ -1,10 +1,11 @@
 extends Node2D
 
-export (NodePath) var pet_view
-export (NodePath) var inventory_view
+export (NodePath) var pet_node
+export (NodePath) var inventory_node
 
 onready var camera = $Camera
-onready var pet = $PetView/Pet
+onready var pet = get_node(pet_node)
+onready var inventory = get_node(inventory_node)
 onready var slider = $CanvasLayer/Control/MarginContainer/VBoxContainer/VSlider
 onready var feed_button = $CanvasLayer/Control/MarginContainer/VBoxContainer/FeedButton
 onready var bake_button = $CanvasLayer/Control/MarginContainer/VBoxContainer/BakeButton
@@ -15,7 +16,7 @@ onready var bake_button = $CanvasLayer/Control/MarginContainer/VBoxContainer/Bak
 
 var active_view_position = 0 setget _set_active_view_position
 
-onready var view_positions = [get_node(pet_view), get_node(inventory_view)]
+onready var view_positions = [pet, inventory]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,6 +46,7 @@ func _on_slider_value_changed(new_val: float) -> void:
 
 func _on_bake_button_pressed():
 	if pet.fill_level_pct > 20.0:
+		inventory.add_bread(pet.get_health_zone())
 		pet.fill_level_pct -= 20.0
 
 

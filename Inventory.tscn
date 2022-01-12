@@ -5,6 +5,9 @@
 
 [node name="Inventory" type="Node2D"]
 script = ExtResource( 2 )
+low_quality_shelf_node = NodePath("LowShelf")
+medium_quality_shelf_node = NodePath("MediumShelf")
+high_quality_shelf_node = NodePath("HighShelf")
 
 [node name="CameraPos" type="Position2D" parent="."]
 
