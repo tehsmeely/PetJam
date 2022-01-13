@@ -138,3 +138,13 @@ __meta__ = {
 
 [node name="CameraPos" type="Position2D" parent="."]
 position = Vector2( -69, 0 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -205.0
+margin_top = -9.0
+margin_right = -118.0
+margin_bottom = 5.0
+text = "UI Goes Here"
+__meta__ = {
+"_edit_use_anchors_": false
+}

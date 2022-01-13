@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://BuyShelf.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BuyShelf.gd" type="Script" id=2]
+
+[node name="Shop" type="Node2D"]
+
+[node name="BuyShelf1" parent="." instance=ExtResource( 1 )]
+position = Vector2( -143, 0 )
+script = ExtResource( 2 )
+item_name = "Wheat"
+item_tooltip = "Wheat Flour
+Makes me happy"
+flour_modulate = Color( 0.376471, 0.160784, 0.160784, 1 )
+
+[node name="BuyShelf2" parent="." instance=ExtResource( 1 )]
+item_name = "Rye"
+item_tooltip = "Rye Flour
+Makes me happy"
+flour_modulate = Color( 0.270588, 0.0941176, 0.0941176, 1 )
+
+[node name="BuyShelf3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 144, 0 )
+script = ExtResource( 2 )
+item_name = "Spelt"
+item_tooltip = "Spelt Flour
+Makes me happy"
+flour_modulate = Color( 0.32549, 0.160784, 0.780392, 1 )
+
+[node name="CameraPos" type="Position2D" parent="."]

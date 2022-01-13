@@ -2,10 +2,12 @@ extends Node2D
 
 export (NodePath) var pet_node
 export (NodePath) var inventory_node
+export (NodePath) var shop_node
 
 onready var camera = $Camera
 onready var pet = get_node(pet_node)
 onready var inventory = get_node(inventory_node)
+onready var shop = get_node(shop_node)
 onready var slider = $CanvasLayer/Control/MarginContainer/VBoxContainer/VSlider
 onready var feed_button = $CanvasLayer/Control/MarginContainer/VBoxContainer/FeedButton
 onready var bake_button = $CanvasLayer/Control/MarginContainer/VBoxContainer/BakeButton
@@ -16,7 +18,7 @@ onready var bake_button = $CanvasLayer/Control/MarginContainer/VBoxContainer/Bak
 
 var active_view_position = 0 setget _set_active_view_position
 
-onready var view_positions = [pet, inventory]
+onready var view_positions = [pet, inventory, shop]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,10 +35,10 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_pressed("ui_right"):
-		self.active_view_position = clamp(active_view_position + 1, 0, 1)
-	elif Input.is_action_pressed("ui_left"):
-		self.active_view_position = clamp(active_view_position - 1, 0, 1)
+	if Input.is_action_just_pressed("ui_right"):
+		self.active_view_position = clamp(active_view_position + 1, 0, 2)
+	elif Input.is_action_just_pressed("ui_left"):
+		self.active_view_position = clamp(active_view_position - 1, 0, 2)
 
 
 func _on_slider_value_changed(new_val: float) -> void:
