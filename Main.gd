@@ -8,9 +8,9 @@ onready var camera = $Camera
 onready var pet = get_node(pet_node)
 onready var inventory = get_node(inventory_node)
 onready var shop = get_node(shop_node)
-onready var slider = $CanvasLayer/Control/MarginContainer/VBoxContainer/VSlider
-onready var feed_button = $CanvasLayer/Control/MarginContainer/VBoxContainer/FeedButton
-onready var bake_button = $CanvasLayer/Control/MarginContainer/VBoxContainer/BakeButton
+onready var slider = $DebugUI/Control/MarginContainer/VBoxContainer/VSlider
+onready var feed_button = $DebugUI/Control/MarginContainer/VBoxContainer/FeedButton
+onready var bake_button = $DebugUI/Control/MarginContainer/VBoxContainer/BakeButton
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -48,8 +48,12 @@ func _on_slider_value_changed(new_val: float) -> void:
 
 func _on_bake_button_pressed():
 	if pet.fill_level_pct > 20.0:
-		inventory.add_bread(pet.get_health_zone())
-		pet.fill_level_pct -= 20.0
+		bake_bread(pet.get_quality())
+
+
+func bake_bread(quality: int) -> void:
+	inventory.add_bread(quality)
+	pet.fill_level_pct -= 20.0
 
 
 func _set_active_view_position(new_avp: int) -> void:

@@ -42,8 +42,21 @@ func feed() -> void:
 	self.fill_level_pct += 20.0
 	self.health.boost(20.0)
 
-func get_health_zone() -> int:
-	return self.health.health_zone
+
+func get_quality() -> int:
+	match self.health.health_zone:
+		Global.HealthZone.BAD:
+			return Global.Quality.LOW
+		Global.HealthZone.FINE:
+			return Global.Quality.MEDIUM
+		Global.HealthZone.GOOD:
+			return Global.Quality.HIGH
+		Global.HealthZone.GOLD:
+			return Global.Quality.HIGH
+		_:
+			assert(false, "Invalid HealthZone from health")
+			return 0
+
 
 func set_fill_level_pct(pct: float) -> void:
 	if pct > 100.0:

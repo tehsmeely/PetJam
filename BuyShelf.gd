@@ -1,8 +1,10 @@
 extends Node2D
 
+signal purchased(name)
+
 export (String) var item_name
 export (String, MULTILINE) var item_tooltip
-export (int) var item_cost
+export (float) var item_cost
 export (Color) var flour_modulate = Color(1, 1, 1, 1)
 
 onready var label = $Label
@@ -20,4 +22,7 @@ func _ready():
 
 
 func _on_buy_button_pressed() -> void:
-	flour.buy()
+	if GameState.gold >= item_cost:
+		flour.buy()
+		emit_signal("purchased", self.item_name)
+		GameState.gold -= item_cost

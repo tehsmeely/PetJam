@@ -40,10 +40,24 @@ func _sell_bread():
 		print(bread)
 		bread.queue_free()
 		self.bread_count -= 1
+		GameState.gold += _quality_to_sell_price(self.quality)
 
 
 func _update_label() -> void:
 	label.text = "%s: %d" % [_quality_to_string(self.quality), bread_count]
+
+
+func _quality_to_sell_price(_quality: int) -> float:
+	match _quality:
+		Quality.LOW:
+			return 3.0
+		Quality.MEDIUM:
+			return 6.0
+		Quality.HIGH:
+			return 10.0
+		_:
+			assert(false, "Invalid quality %i" % [_quality])
+			return 0.0
 
 
 func _quality_to_string(_quality: int) -> String:
