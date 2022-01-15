@@ -4,7 +4,7 @@ extends CanvasLayer
 # var a = 2
 # var b = "text"
 
-onready var gold_label = $Control/MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/Label
+onready var gold_label = $Control/MarginContainer/HBoxContainer/GoldCounter/NinePatchRect/MarginContainer/Label
 
 
 # Called when the node enters the scene tree for the first time.
