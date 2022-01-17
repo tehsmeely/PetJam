@@ -26,10 +26,14 @@ func _ready():
 		"numbers of item names and item colours should match up"
 	)
 
-	var _err = l_button.connect("pressed", self, "_on_left_pressed")
-	var _err2 = r_button.connect("pressed", self, "_on_right_pressed")
-	var _err3 = item_texture_transition_timer.connect("timeout", self, "_on_transition_timer_fired")
-	var _err4 = feed_button.connect("pressed", self, "_on_feed_button_pressed")
+	var err = l_button.connect("pressed", self, "_on_left_pressed")
+	Global.handle_connect_error(err)
+	var err2 = r_button.connect("pressed", self, "_on_right_pressed")
+	Global.handle_connect_error(err2)
+	var err3 = item_texture_transition_timer.connect("timeout", self, "_on_transition_timer_fired")
+	Global.handle_connect_error(err3)
+	var err4 = feed_button.connect("pressed", self, "_on_feed_button_pressed")
+	Global.handle_connect_error(err4)
 
 	_apply_current_item_index()
 

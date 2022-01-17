@@ -9,6 +9,10 @@ onready var medium_quality_shelf = get_node(medium_quality_shelf_node)
 onready var high_quality_shelf = get_node(high_quality_shelf_node)
 
 
+func end_of_day() -> void:
+	print("End of day")
+
+
 func add_bread(quality: int) -> void:
 	match quality:
 		Global.Quality.LOW:

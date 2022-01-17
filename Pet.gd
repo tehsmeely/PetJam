@@ -38,6 +38,10 @@ func _process(delta):
 		update_cull = 0
 
 
+func end_of_day() -> void:
+	print("End of day")
+
+
 func feed() -> void:
 	self.fill_level_pct += 20.0
 	self.health.boost(20.0)

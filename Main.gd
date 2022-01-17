@@ -11,6 +11,8 @@ onready var shop = get_node(shop_node)
 onready var slider = $DebugUI/Control/MarginContainer/VBoxContainer/VSlider
 onready var feed_button = $DebugUI/Control/MarginContainer/VBoxContainer/FeedButton
 onready var bake_button = $DebugUI/Control/MarginContainer/VBoxContainer/BakeButton
+onready var sleep_button = $DebugUI/Control/MarginContainer/VBoxContainer/SleepButton
+onready var night_transition_animation = $NightTransition/ColorRect/AnimationPlayer
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -28,6 +30,8 @@ func _ready():
 
 	var _err2 = feed_button.connect("pressed", pet, "feed")
 	var _err3 = bake_button.connect("pressed", self, "_on_bake_button_pressed")
+	var err4 = sleep_button.connect("pressed", self, "end_of_day")
+	Global.handle_connect_error(err4)
 
 	camera.smoothing_enabled = false
 	self._actually_set_active_view_position(0, true)
@@ -54,6 +58,20 @@ func _on_bake_button_pressed():
 func bake_bread(quality: int) -> void:
 	inventory.add_bread(quality)
 	pet.fill_level_pct -= 20.0
+
+
+func end_of_day() -> void:
+	night_transition_animation.play("FadeOutFadeIn")
+	GameState.day += 1
+
+	#Update Pet Health / Volume
+	pet.end_of_day()
+
+	#Update Market Prices
+	inventory.end_of_day()
+
+	#Restock Shop
+	shop.end_of_day()
 
 
 func _set_active_view_position(new_avp: int) -> void:
