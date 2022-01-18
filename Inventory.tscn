@@ -14,9 +14,15 @@ high_quality_shelf_node = NodePath("HighShelf")
 [node name="LowShelf" parent="." instance=ExtResource( 1 )]
 position = Vector2( -156, 0 )
 quality = 0
+min_price = 3.0
+max_price = 7.0
 
 [node name="MediumShelf" parent="." instance=ExtResource( 1 )]
+min_price = 8.0
+max_price = 15.0
 
 [node name="HighShelf" parent="." instance=ExtResource( 1 )]
 position = Vector2( 156, 0 )
 quality = 2
+min_price = 10.0
+max_price = 20.0

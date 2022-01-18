@@ -13,14 +13,18 @@ position = Vector2( -143, 0 )
 item_name = "Wheat"
 item_tooltip = "Wheat Flour
 Makes me happy"
-item_cost = 5.0
+item_cost_min = 10.0
+item_cost_max = 15.0
+stock_max = 2
 flour_modulate = Color( 0.376471, 0.160784, 0.160784, 1 )
 
 [node name="BuyShelf2" parent="Shelves" instance=ExtResource( 1 )]
 item_name = "Rye"
 item_tooltip = "Rye Flour
 Makes me happy"
-item_cost = 5.0
+item_cost_min = 20.0
+item_cost_max = 25.0
+stock_max = 2
 flour_modulate = Color( 0.270588, 0.0941176, 0.0941176, 1 )
 
 [node name="BuyShelf3" parent="Shelves" instance=ExtResource( 1 )]
@@ -28,7 +32,9 @@ position = Vector2( 144, 0 )
 item_name = "Spelt"
 item_tooltip = "Spelt Flour
 Makes me happy"
-item_cost = 5.0
+item_cost_min = 50.0
+item_cost_max = 100.0
+stock_max = 1
 flour_modulate = Color( 0.32549, 0.160784, 0.780392, 1 )
 
 [node name="CameraPos" type="Position2D" parent="."]

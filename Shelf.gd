@@ -5,6 +5,12 @@ enum Quality { LOW, MEDIUM, HIGH }
 export (PackedScene) var bread_scene
 export (float) var bread_offset = 12.0
 export (Quality) var quality = Quality.MEDIUM
+export (float) var min_price = 1.0
+export (float) var max_price = 10.0
+
+var rng = RandomNumberGenerator.new()
+
+var price
 
 onready var bread_start_point = $BreadStartPoint
 onready var label = $Label
@@ -16,9 +22,15 @@ var bread_count = 0 setget _set_bread_count
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
+	randomise_price()
 	var _err = debug_spawn_button.connect("pressed", self, "spawn_bread")
 	var _err2 = debug_sell_button.connect("pressed", self, "_sell_bread")
 	_update_label()
+
+
+func randomise_price() -> void:
+	price = rng.randf_range(min_price, max_price)
 
 
 func initialise(init_bread_count: int) -> void:
@@ -40,24 +52,11 @@ func _sell_bread():
 		print(bread)
 		bread.queue_free()
 		self.bread_count -= 1
-		GameState.gold += _quality_to_sell_price(self.quality)
+		GameState.gold += price
 
 
 func _update_label() -> void:
 	label.text = "%s: %d" % [_quality_to_string(self.quality), bread_count]
-
-
-func _quality_to_sell_price(_quality: int) -> float:
-	match _quality:
-		Quality.LOW:
-			return 3.0
-		Quality.MEDIUM:
-			return 6.0
-		Quality.HIGH:
-			return 10.0
-		_:
-			assert(false, "Invalid quality %i" % [_quality])
-			return 0.0
 
 
 func _quality_to_string(_quality: int) -> String:

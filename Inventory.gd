@@ -10,7 +10,10 @@ onready var high_quality_shelf = get_node(high_quality_shelf_node)
 
 
 func end_of_day() -> void:
-	print("End of day")
+	print("Inventory End of day")
+	low_quality_shelf.randomise_price()
+	medium_quality_shelf.randomise_price()
+	high_quality_shelf.randomise_price()
 
 
 func add_bread(quality: int) -> void:

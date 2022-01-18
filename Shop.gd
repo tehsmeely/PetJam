@@ -11,7 +11,10 @@ func _ready():
 
 
 func end_of_day() -> void:
-	print("End of day")
+	print("Shop End of day")
+	for shelf in shelves.get_children():
+		shelf.randomise_cost()
+		shelf.recover_stock()
 
 
 func _on_shelf_purchased(name: String) -> void:

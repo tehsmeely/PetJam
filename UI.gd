@@ -4,7 +4,7 @@ extends CanvasLayer
 # var a = 2
 # var b = "text"
 
-onready var gold_label = $Control/MarginContainer/HBoxContainer/GoldCounter/NinePatchRect/MarginContainer/Label
+onready var gold_label = $Control/MarginContainer/HBoxContainer/GoldCounter/NinePatchRect/Label
 onready var day_label = $Control/MarginContainer/HBoxContainer/DayCounter/Label
 
 

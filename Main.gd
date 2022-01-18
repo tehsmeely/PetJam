@@ -14,10 +14,6 @@ onready var bake_button = $DebugUI/Control/MarginContainer/VBoxContainer/BakeBut
 onready var sleep_button = $DebugUI/Control/MarginContainer/VBoxContainer/SleepButton
 onready var night_transition_animation = $NightTransition/ColorRect/AnimationPlayer
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var active_view_position = 0 setget _set_active_view_position
 
 onready var view_positions = [pet, inventory, shop]
@@ -36,6 +32,9 @@ func _ready():
 	camera.smoothing_enabled = false
 	self._actually_set_active_view_position(0, true)
 	camera.smoothing_enabled = true
+
+	print("Main Ready")
+	GameState.load()
 
 
 func _process(_delta):
