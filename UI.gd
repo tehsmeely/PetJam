@@ -7,6 +7,9 @@ extends CanvasLayer
 onready var gold_label = $Control/MarginContainer/HBoxContainer/GoldCounter/NinePatchRect/Label
 onready var day_label = $Control/MarginContainer/HBoxContainer/DayCounter/Label
 
+onready var left_arrow = $MarginContainer/HBoxContainer/LeftArrow
+onready var right_arrow = $MarginContainer/HBoxContainer/RightArrow
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,9 +19,9 @@ func _ready():
 	Global.handle_connect_error(err2)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
+func set_arrow_visibility(left: bool, right: bool) -> void:
+	left_arrow.visible = left
+	right_arrow.visible = right
 
 
 func _on_gold_changed(new_gold: float) -> void:

@@ -13,6 +13,7 @@ onready var feed_button = $DebugUI/Control/MarginContainer/VBoxContainer/FeedBut
 onready var bake_button = $DebugUI/Control/MarginContainer/VBoxContainer/BakeButton
 onready var sleep_button = $DebugUI/Control/MarginContainer/VBoxContainer/SleepButton
 onready var night_transition_animation = $NightTransition/ColorRect/AnimationPlayer
+onready var ui = $UI
 
 var active_view_position = 0 setget _set_active_view_position
 
@@ -98,6 +99,7 @@ func _set_active_view_position(new_avp: int) -> void:
 
 
 func _actually_set_active_view_position(avp: int, set_y: bool) -> void:
+	ui.set_arrow_visibility(avp > 0, avp < 2)
 	var target_node = self.view_positions[avp].get_node("CameraPos")
 	camera.global_position.x = target_node.global_position.x
 	if set_y:
