@@ -16,6 +16,10 @@ func end_of_day() -> void:
 	high_quality_shelf.randomise_price()
 
 
+func camera_pos_x_offset() -> float:
+	return get_node("CameraPos").position.x
+
+
 func add_bread(quality: int) -> void:
 	match quality:
 		Global.Quality.LOW:

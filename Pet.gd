@@ -47,6 +47,10 @@ func feed() -> void:
 	self.health.boost(20.0)
 
 
+func camera_pos_x_offset() -> float:
+	return get_node("CameraPos").position.x
+
+
 func get_quality() -> int:
 	match self.health.health_zone:
 		Global.HealthZone.BAD:

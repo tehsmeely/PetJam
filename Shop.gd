@@ -17,5 +17,9 @@ func end_of_day() -> void:
 		shelf.recover_stock()
 
 
+func camera_pos_x_offset() -> float:
+	return get_node("CameraPos").position.x
+
+
 func _on_shelf_purchased(name: String) -> void:
 	emit_signal("item_purchased", name)

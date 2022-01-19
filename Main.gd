@@ -33,8 +33,26 @@ func _ready():
 	self._actually_set_active_view_position(0, true)
 	camera.smoothing_enabled = true
 
+	var err5 = get_viewport().connect("size_changed", self, "_on_viewport_size_changed")
+	Global.handle_connect_error(err5)
+	self._on_viewport_size_changed()
+
 	print("Main Ready")
 	GameState.load()
+
+
+func _on_viewport_size_changed() -> void:
+	# position_views
+	# All the CameraPos node should be spaced Viewport.size.x apart
+	var width = get_viewport().size.x
+	var x0 = pet.global_position.x + pet.camera_pos_x_offset()
+	var x1 = x0 + width - inventory.camera_pos_x_offset()
+	var x2 = x0 + (2 * width) - shop.camera_pos_x_offset()
+
+	inventory.global_position.x = x1
+	shop.global_position.x = x2
+
+	_actually_set_active_view_position(self.active_view_position, false)
 
 
 func _process(_delta):
