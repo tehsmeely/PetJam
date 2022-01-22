@@ -23,3 +23,18 @@ func camera_pos_x_offset() -> float:
 
 func _on_shelf_purchased(name: String) -> void:
 	emit_signal("item_purchased", name)
+
+
+var save_name = "GameShop"
+
+
+func save() -> Dictionary:
+	var data = {}
+	for shelf in shelves.get_children():
+		data[shelf.item_name] = shelf.save()
+	return data
+
+
+func load(data: Dictionary) -> void:
+	for shelf in shelves.get_children():
+		shelf.load(data[shelf.item_name])

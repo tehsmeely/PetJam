@@ -53,3 +53,13 @@ func randomise_cost() -> void:
 func recover_stock() -> void:
 	var recoup = rng.randi_range(0, stock_max)
 	self.stock = clamp(0, stock + recoup, stock_max)
+
+
+func save() -> Dictionary:
+	# Item name is used as a key in the Shop parent save/load so excluded here
+	return {"item_cost": self.item_cost, "stock": self.stock}
+
+
+func load(data: Dictionary) -> void:
+	self.item_cost = data["item_cost"]
+	self.stock = data["stock"]

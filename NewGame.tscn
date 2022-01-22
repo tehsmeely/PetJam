@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/bread.png" type="Texture" id=1]
+[ext_resource path="res://NewGame.gd" type="Script" id=2]
+[ext_resource path="res://resources/display_font.tres" type="DynamicFont" id=3]
+
+[node name="NewGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.999002, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+random_names = [ "Lord Sour-on", "John Dough", "Souruman" ]
+game_scene = "res://Main.tscn"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+margin_left = 820.0
+margin_top = 400.0
+margin_right = 1100.0
+margin_bottom = 680.0
+rect_min_size = Vector2( 280, 280 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 841.0
+margin_top = 481.0
+margin_right = 1078.0
+margin_bottom = 598.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 237.0
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 3 )
+text = "Name Your Starter"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 237.0
+margin_bottom = 69.0
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 150, 0 )
+
+[node name="RandomButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 154.0
+margin_right = 237.0
+margin_bottom = 24.0
+text = "Randomise"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 73.0
+margin_right = 237.0
+margin_bottom = 93.0
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer/Control"]
+margin_left = 94.0
+margin_right = 142.0
+margin_bottom = 20.0
+text = "Begin"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 97.0
+margin_right = 237.0
+margin_bottom = 117.0
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer/Control2"]
+margin_left = 97.0
+margin_right = 139.0
+margin_bottom = 20.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}

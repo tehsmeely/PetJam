@@ -28,3 +28,20 @@ func add_bread(quality: int) -> void:
 			medium_quality_shelf.spawn_bread()
 		Global.Quality.HIGH:
 			high_quality_shelf.spawn_bread()
+
+
+var save_name = "GameInventory"
+
+
+func save() -> Dictionary:
+	return {
+		"low_q_shelf": self.low_quality_shelf.save(),
+		"medium_q_shelf": self.medium_quality_shelf.save(),
+		"high_q_shelf": self.high_quality_shelf.save()
+	}
+
+
+func load(data: Dictionary) -> void:
+	self.low_quality_shelf.load(data["low_q_shelf"])
+	self.medium_quality_shelf.load(data["medium_q_shelf"])
+	self.high_quality_shelf.load(data["high_q_shelf"])

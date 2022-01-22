@@ -97,7 +97,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["SaveLoad"]]
 script = ExtResource( 2 )
 pet_node = NodePath("Pet")
 inventory_node = NodePath("Inventory")
@@ -226,6 +226,7 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0.682353 )
 margin_right = 1910.0
 margin_bottom = 1080.0
+mouse_filter = 2
 
 [node name="LeftArrow" type="TextureRect" parent="UI/MarginContainer/HBoxContainer"]
 margin_right = 64.0

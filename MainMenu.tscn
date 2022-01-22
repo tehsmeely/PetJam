@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/bread.png" type="Texture" id=1]
 [ext_resource path="res://BreadDropper.gd" type="Script" id=2]
 [ext_resource path="res://Bread.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MainMenu.gd" type="Script" id=4]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+new_game_scene = "res://NewGame.tscn"
+game_scene = "res://Main.tscn"
 
 [node name="BreadDropper" type="Node2D" parent="."]
 script = ExtResource( 2 )
@@ -30,36 +34,45 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
 self_modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 372.0
-margin_top = 160.0
-margin_right = 652.0
-margin_bottom = 440.0
+margin_left = 820.0
+margin_top = 400.0
+margin_right = 1100.0
+margin_bottom = 680.0
 rect_min_size = Vector2( 280, 280 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 492.0
-margin_top = 278.0
-margin_right = 532.0
-margin_bottom = 322.0
+margin_left = 919.0
+margin_top = 506.0
+margin_right = 1001.0
+margin_bottom = 574.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_right = 40.0
+[node name="NewGameButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_right = 82.0
 margin_bottom = 20.0
-text = "Play"
+text = "New Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 24.0
-margin_right = 40.0
+margin_right = 82.0
 margin_bottom = 44.0
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 82.0
+margin_bottom = 68.0
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false

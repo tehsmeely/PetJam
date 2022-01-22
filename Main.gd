@@ -38,8 +38,10 @@ func _ready():
 	Global.handle_connect_error(err5)
 	self._on_viewport_size_changed()
 
+	pet.set_name(GameState.starter_name)
+
 	print("Main Ready")
-	GameState.load()
+	GameState.reload()
 
 
 func _on_viewport_size_changed() -> void:
@@ -91,6 +93,8 @@ func end_of_day() -> void:
 	#Restock Shop
 	shop.end_of_day()
 
+	SaveLoad.save_all()
+
 
 func _set_active_view_position(new_avp: int) -> void:
 	if new_avp != active_view_position:
@@ -104,3 +108,14 @@ func _actually_set_active_view_position(avp: int, set_y: bool) -> void:
 	camera.global_position.x = target_node.global_position.x
 	if set_y:
 		camera.global_position.y = target_node.global_position.y
+
+
+var save_name = "GameMain"
+
+
+func save() -> Dictionary:
+	return {"game_state": GameState.save()}
+
+
+func load(data: Dictionary) -> void:
+	GameState.load(data["game_state"])

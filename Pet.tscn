@@ -51,7 +51,7 @@ tracks/0/keys = {
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 64, 64 )
 
-[node name="Pet" type="Node2D"]
+[node name="Pet" type="Node2D" groups=["SaveLoad"]]
 script = ExtResource( 5 )
 min_fill_eye_scale_threshold_pct = 30.0
 
@@ -120,7 +120,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Health" type="Node2D" parent="."]
+[node name="Health" type="Node2D" parent="." groups=["SaveLoad"]]
 script = ExtResource( 9 )
 acceleration = -2.0
 

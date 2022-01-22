@@ -89,3 +89,15 @@ func _set_health_zone(new_health_zone: int) -> void:
 			progress_bar.self_modulate = Color("f54a4a")
 
 	health_zone = new_health_zone
+
+
+var save_name = "GamePetHealth"
+
+
+func save() -> Dictionary:
+	return {"health_pct": self.health_pct, "velocity": self.velocity}
+
+
+func load(data: Dictionary) -> void:
+	self.health_pct = data["health_pct"]
+	self.velocity = data["velocity"]

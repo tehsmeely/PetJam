@@ -1,9 +1,5 @@
 extends CanvasLayer
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var gold_label = $Control/MarginContainer/HBoxContainer/GoldCounter/NinePatchRect/Label
 onready var day_label = $Control/MarginContainer/HBoxContainer/DayCounter/Label
 

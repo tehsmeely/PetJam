@@ -6,8 +6,10 @@ signal day_changed(new_day)
 var gold := 0.0 setget _set_gold
 var day := 0 setget _set_day
 
+var starter_name = ""
 
-func load() -> void:
+
+func reload() -> void:
 	self.gold = 100.0
 	self.day = 0
 
@@ -20,3 +22,14 @@ func _set_gold(new_gold: float) -> void:
 func _set_day(new_day: int) -> void:
 	day = new_day
 	emit_signal("day_changed", new_day)
+
+
+func save() -> Dictionary:
+	# This also needs to include the shop state, inventory state, and pet(-health) state
+	return {"starter_name": starter_name, "gold": gold, "day": day}
+
+
+func load(data: Dictionary) -> void:
+	self.gold = data["gold"]
+	self.day = data["day"]
+	self.starter_name = data["starter_name"]

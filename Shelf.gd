@@ -76,3 +76,12 @@ func _set_bread_count(count: int) -> void:
 	if count != bread_count:
 		bread_count = count
 		_update_label()
+
+
+func save() -> Dictionary:
+	return {"price": self.price, "bread_count": self.bread_count}
+
+
+func load(data: Dictionary) -> void:
+	self.price = data["price"]
+	self.initialise(data["bread_count"])

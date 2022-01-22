@@ -14,6 +14,7 @@ onready var mouth = $FillLevel/Mouth
 onready var eyes = $FillLevel/EyesSprite
 onready var fill_label = $FillLabel
 onready var health = $Health
+onready var name_label = $NameLabel
 
 onready var fill_max_pos = $FillMax
 onready var fill_min_pos = $FillMin
@@ -45,6 +46,10 @@ func end_of_day() -> void:
 func feed() -> void:
 	self.fill_level_pct += 20.0
 	self.health.boost(20.0)
+
+
+func set_name(name: String) -> void:
+	name_label.text = name
 
 
 func camera_pos_x_offset() -> float:
@@ -96,3 +101,14 @@ func set_fill_level_pct(pct: float) -> void:
 	mouth.texture.region = Rect2(Vector2(mouth_mode * 64, 0), mouth.texture.region.size)
 
 	fill_label.text = "%.0f%%" % [pct]
+
+
+var save_name = "GamePet"
+
+
+func save() -> Dictionary:
+	return {"fill_level_pct": self.fill_level_pct}
+
+
+func load(data: Dictionary) -> void:
+	self.fill_level_pct = data["fill_level_pct"]
