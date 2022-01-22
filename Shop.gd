@@ -22,6 +22,7 @@ func camera_pos_x_offset() -> float:
 
 
 func _on_shelf_purchased(name: String) -> void:
+	print("item_purchased", name)
 	emit_signal("item_purchased", name)
 
 

@@ -8,10 +8,12 @@ onready var camera = $Camera
 onready var pet = get_node(pet_node)
 onready var inventory = get_node(inventory_node)
 onready var shop = get_node(shop_node)
+onready var popup = $UI/PopupContainer/AcceptDialog
 onready var slider = $DebugUI/Control/MarginContainer/VBoxContainer/VSlider
 onready var feed_button = $DebugUI/Control/MarginContainer/VBoxContainer/FeedButton
 onready var bake_button = $DebugUI/Control/MarginContainer/VBoxContainer/BakeButton
 onready var sleep_button = $DebugUI/Control/MarginContainer/VBoxContainer/SleepButton
+onready var show_health_button = $DebugUI/Control/MarginContainer/VBoxContainer/HealthButton
 onready var night_transition_animation = $NightTransition/ColorRect/AnimationPlayer
 onready var ui = $UI
 
@@ -29,19 +31,32 @@ func _ready():
 	var _err3 = bake_button.connect("pressed", self, "_on_bake_button_pressed")
 	var err4 = sleep_button.connect("pressed", self, "end_of_day")
 	Global.handle_connect_error(err4)
+	var err5 = show_health_button.connect("pressed", self, "_on_show_health_button")
+	Global.handle_connect_error(err5)
 
 	camera.smoothing_enabled = false
 	self._actually_set_active_view_position(0, true)
 	camera.smoothing_enabled = true
 
-	var err5 = get_viewport().connect("size_changed", self, "_on_viewport_size_changed")
-	Global.handle_connect_error(err5)
+	var err6 = get_viewport().connect("size_changed", self, "_on_viewport_size_changed")
+	Global.handle_connect_error(err6)
 	self._on_viewport_size_changed()
+
+	var err7 = shop.connect("item_purchased", self, "_on_item_purchased")
 
 	pet.set_name(GameState.starter_name)
 
 	print("Main Ready")
 	GameState.reload()
+
+
+func _on_item_purchased(item_name: String) -> void:
+	pet.add_flour(item_name)
+
+
+func _on_show_health_button() -> void:
+	popup.dialog_text = pet.health.debug_string()
+	popup.popup()
 
 
 func _on_viewport_size_changed() -> void:

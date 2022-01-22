@@ -8,6 +8,7 @@ Critical:
 * Flour Effects
 	* Temporary effects from different flours
 	* Display Effects
+* Sound Effects
 
 
 Nice To Have

@@ -3,11 +3,9 @@ extends Node2D
 signal purchased(name)
 
 export (String) var item_name
-export (String, MULTILINE) var item_tooltip
 export (float) var item_cost_min
 export (float) var item_cost_max
 export (int) var stock_max
-export (Color) var flour_modulate = Color(1, 1, 1, 1)
 
 onready var label = $Label
 onready var tooltip_question_mark = $Panel
@@ -23,8 +21,8 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	rng.randomize()
 	randomise_cost()
-	flour.modulate = flour_modulate
-	tooltip_question_mark.hint_tooltip = item_tooltip
+	flour.modulate = HealthEffect.colour_of_flour(item_name)
+	tooltip_question_mark.hint_tooltip = HealthEffect.description_of_name(item_name)
 	var _err = buy_button.connect("pressed", self, "_on_buy_button_pressed")
 	_update_label_text()
 

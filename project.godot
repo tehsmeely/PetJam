@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "HealthEffect",
+"language": "GDScript",
+"path": "res://HealthEffect.gd"
+} ]
+_global_script_class_icons={
+"HealthEffect": ""
+}
+
 [application]
 
 config/name="Pet Jam"
