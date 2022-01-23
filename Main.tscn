@@ -7,7 +7,7 @@
 [ext_resource path="res://Shop.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/coin.png" type="Texture" id=6]
 [ext_resource path="res://UI.gd" type="Script" id=7]
-[ext_resource path="res://assets/bread_slice.png" type="Texture" id=8]
+[ext_resource path="res://assets/money_bag.png" type="Texture" id=8]
 [ext_resource path="res://resources/display_font.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/arrow.png" type="Texture" id=10]
 [ext_resource path="res://assets/Sounds/150879__nenadsimic__jazzy-chords.wav" type="AudioStream" id=11]
@@ -181,23 +181,21 @@ __meta__ = {
 }
 
 [node name="GoldCounter" type="MarginContainer" parent="UI/Control/MarginContainer/HBoxContainer"]
-margin_right = 90.0
+margin_right = 100.0
 margin_bottom = 80.0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI/Control/MarginContainer/HBoxContainer/GoldCounter"]
-margin_right = 90.0
+[node name="NinePatchRect" type="TextureRect" parent="UI/Control/MarginContainer/HBoxContainer/GoldCounter"]
+margin_right = 100.0
 margin_bottom = 80.0
-rect_min_size = Vector2( 90, 80 )
+rect_min_size = Vector2( 100, 80 )
 texture = ExtResource( 8 )
-patch_margin_left = 9
-patch_margin_top = 7
-patch_margin_right = 9
-patch_margin_bottom = 7
+stretch_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/Control/MarginContainer/HBoxContainer/GoldCounter/NinePatchRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -40.0
+margin_top = 18.0
+margin_right = -51.0
 texture = ExtResource( 6 )
 stretch_mode = 4
 __meta__ = {
@@ -207,8 +205,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="UI/Control/MarginContainer/HBoxContainer/GoldCounter/NinePatchRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 7.0
-margin_right = -12.0
+margin_top = 28.0
+margin_right = -19.0
 custom_fonts/font = ExtResource( 9 )
 text = "1234"
 align = 2
@@ -218,12 +216,19 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/MarginContainer/HBoxContainer/GoldCounter"]
-margin_right = 90.0
+margin_right = 100.0
 margin_bottom = 80.0
 
+[node name="Control" type="Control" parent="UI/Control/MarginContainer/HBoxContainer"]
+margin_left = 104.0
+margin_right = 1744.0
+margin_bottom = 80.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
 [node name="DayCounter" type="MarginContainer" parent="UI/Control/MarginContainer/HBoxContainer"]
-margin_left = 94.0
-margin_right = 143.0
+margin_left = 1748.0
+margin_right = 1797.0
 margin_bottom = 80.0
 
 [node name="Label" type="Label" parent="UI/Control/MarginContainer/HBoxContainer/DayCounter"]
@@ -238,12 +243,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="UI/Control/MarginContainer/HBoxContainer"]
-margin_left = 147.0
+[node name="Control2" type="Control" parent="UI/Control/MarginContainer/HBoxContainer"]
+margin_left = 1801.0
 margin_right = 1816.0
 margin_bottom = 80.0
-mouse_filter = 2
-size_flags_horizontal = 3
+rect_min_size = Vector2( 15, 0 )
 
 [node name="SleepButton" type="TextureButton" parent="UI/Control/MarginContainer/HBoxContainer"]
 margin_left = 1820.0
