@@ -25,6 +25,12 @@ func save_file_available() -> bool:
 	return save_game.file_exists(save_filename)
 
 
+func clear_save() -> void:
+	var dir = Directory.new()
+	if dir.file_exists(save_filename):
+		dir.remove(save_filename)
+
+
 func load_all() -> void:
 	## Assumes save file exists
 	var save_game = File.new()

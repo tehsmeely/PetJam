@@ -3,6 +3,8 @@ extends Node2D
 export (NodePath) var pet_node
 export (NodePath) var inventory_node
 export (NodePath) var shop_node
+export (float) var overflow_cleanup_cost = 25.0
+export (String, FILE, "*.tscn,*.scn") var main_menu_scene = null
 
 onready var camera = $Camera
 onready var pet = get_node(pet_node)
@@ -15,6 +17,10 @@ onready var bake_button = $DebugUI/Control/MarginContainer/VBoxContainer/BakeBut
 onready var sleep_button = $DebugUI/Control/MarginContainer/VBoxContainer/SleepButton
 onready var show_health_button = $DebugUI/Control/MarginContainer/VBoxContainer/HealthButton
 onready var night_transition_animation = $NightTransition/ColorRect/AnimationPlayer
+onready var popup_overflow = $UI/OverflowPopup/AcceptDialog
+onready var popup_emptyloss = $UI/EmptyLossPopup/AcceptDialog
+onready var audio_overflow = $Audio/Overflow
+onready var audio_emptyloss = $Audio/EmptyLoss
 onready var ui = $UI
 
 var active_view_position = 0 setget _set_active_view_position
@@ -45,9 +51,6 @@ func _ready():
 	var err7 = shop.connect("item_purchased", self, "_on_item_purchased")
 	Global.handle_connect_error(err7)
 
-	#signal overflow_occured
-	#signal empty_occured
-	#signal bread_baked(quality)
 	var err8 = pet.connect("overflow_occured", self, "_on_pet_overflow")
 	Global.handle_connect_error(err8)
 	var err9 = pet.connect("empty_occured", self, "_on_pet_empty")
@@ -60,6 +63,19 @@ func _ready():
 	print("Main Ready")
 	GameState.reload()
 	MusicPlayer.set_mode(MusicPlayer.MusicMode.GAME)
+	_setup_popups()
+
+
+func _setup_popups() -> void:
+	popup_emptyloss.get_close_button().visible = false
+	popup_emptyloss.connect("confirmed", self, "_end_game")
+	popup_overflow.get_close_button().visible = false
+	popup_overflow.connect("confirmed", self, "_on_overflow_confirmed")
+
+
+func _end_game():
+	SaveLoad.clear_save()
+	SceneSwitcher.goto_scene(main_menu_scene)
 
 
 func _on_item_purchased(item_name: String) -> void:
@@ -98,11 +114,22 @@ func _on_slider_value_changed(new_val: float) -> void:
 
 
 func _on_pet_overflow() -> void:
-	pass
+	popup_overflow.popup()
+	audio_overflow.play()
+
+
+func _on_overflow_confirmed() -> void:
+	if GameState.gold < self.overflow_cleanup_cost:
+		GameState.gold = 0
+	else:
+		GameState.gold -= self.overflow_cleanup_cost
+
+	pet.penalise_health()
 
 
 func _on_pet_empty() -> void:
-	pass
+	popup_emptyloss.popup()
+	audio_emptyloss.play()
 
 
 func _on_bake_button_pressed():

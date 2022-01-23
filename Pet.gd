@@ -123,6 +123,10 @@ func camera_pos_x_offset() -> float:
 	return get_node("CameraPos").position.x
 
 
+func penalise_health() -> void:
+	print("TODO. Penalising health from overflow")
+
+
 func get_quality() -> int:
 	match self.health.health_zone:
 		Global.HealthZone.BAD:

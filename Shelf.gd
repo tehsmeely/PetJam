@@ -16,8 +16,7 @@ var price
 
 onready var bread_start_point = $BreadStartPoint
 onready var label = $Label
-onready var debug_spawn_button: Button = $SpawnButton
-onready var debug_sell_button: Button = $SellButton
+onready var sell_button: Button = $SellButton
 
 var bread_count = 0 setget _set_bread_count
 
@@ -26,8 +25,8 @@ var bread_count = 0 setget _set_bread_count
 func _ready():
 	rng.randomize()
 	randomise_price()
-	var _err = debug_spawn_button.connect("pressed", self, "spawn_bread")
-	var _err2 = debug_sell_button.connect("pressed", self, "_sell_bread")
+	var err = sell_button.connect("pressed", self, "_sell_bread")
+	Global.handle_connect_error(err)
 	_update_label()
 
 

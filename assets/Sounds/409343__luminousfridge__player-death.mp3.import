@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/409343__luminousfridge__player-death.mp3-576a6bb0f89820ed267cc9eea3ad4beb.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/409343__luminousfridge__player-death.mp3"
+dest_files=[ "res://.import/409343__luminousfridge__player-death.mp3-576a6bb0f89820ed267cc9eea3ad4beb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

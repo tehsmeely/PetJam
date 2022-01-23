@@ -14,21 +14,11 @@ texture = ExtResource( 1 )
 [node name="BreadStartPoint" type="Position2D" parent="."]
 position = Vector2( 0, -16 )
 
-[node name="SpawnButton" type="Button" parent="."]
-margin_left = -24.0
-margin_top = 67.0
-margin_right = 28.0
-margin_bottom = 87.0
-text = "Spawn"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="SellButton" type="Button" parent="."]
 margin_left = -24.0
-margin_top = 44.0
+margin_top = 49.0
 margin_right = 28.0
-margin_bottom = 64.0
+margin_bottom = 69.0
 text = "Sell"
 __meta__ = {
 "_edit_use_anchors_": false

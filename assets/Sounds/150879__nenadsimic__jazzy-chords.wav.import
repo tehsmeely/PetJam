@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/150879__nenadsimic__jazzy-chords.wav-0161c1afd1236269e424165042fd2e82.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/150879__nenadsimic__jazzy-chords.wav"
+dest_files=[ "res://.import/150879__nenadsimic__jazzy-chords.wav-0161c1afd1236269e424165042fd2e82.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
