@@ -127,6 +127,7 @@ script = ExtResource( 9 )
 acceleration = -2.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Health"]
+visible = false
 self_modulate = Color( 0.960784, 0.290196, 0.290196, 1 )
 margin_left = 51.0
 margin_top = 53.0

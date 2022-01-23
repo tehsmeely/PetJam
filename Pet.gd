@@ -13,6 +13,7 @@ export (float) var bake_fill_usage = 30.0
 
 var fill_level_pct := 50.0 setget set_fill_level_pct
 var update_cull = 0
+var moustache_visible = false setget _set_moustache_visible
 
 onready var eyes_animation_player = $FillLevel/EyesSprite/AnimationPlayer
 onready var blink_timer = $FillLevel/EyesSprite/BlinkTimer
@@ -53,6 +54,14 @@ func _realtime_process(delta):
 
 		self.fill_level_pct = self.fill_level_pct + growth
 		update_cull = 0
+
+
+func enable_moustache() -> void:
+	self.moustache_visible = true
+
+
+func enable_probe() -> void:
+	health.health_bar_visible = true
 
 
 func end_of_day() -> void:
@@ -173,12 +182,19 @@ func set_fill_level_pct(pct: float) -> void:
 	fill_label.text = "%.0f%%" % [pct]
 
 
+func _set_moustache_visible(mv: bool) -> void:
+	#TODO: Set moustache visible
+	print("MOUSTACH!")
+	moustache_visible = mv
+
+
 var save_name = "GamePet"
 
 
 func save() -> Dictionary:
-	return {"fill_level_pct": self.fill_level_pct}
+	return {"fill_level_pct": self.fill_level_pct, "moustache_visible": self.moustache_visible}
 
 
 func load(data: Dictionary) -> void:
 	self.fill_level_pct = data["fill_level_pct"]
+	self.moustache_visible = data["moustache_visible"]

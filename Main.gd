@@ -61,6 +61,11 @@ func _ready():
 
 	var err11 = ui.connect("sleep_button_pressed", self, "end_of_day")
 	Global.handle_connect_error(err11)
+	var err12 = ui.connect("quit_to_menu", self, "_quit_to_menu")
+	Global.handle_connect_error(err12)
+
+	var err13 = shop.connect("one_off_item_purchased", self, "_on_one_off_item_purchased")
+	Global.handle_connect_error(err13)
 
 	pet.set_name(GameState.starter_name)
 
@@ -79,7 +84,21 @@ func _setup_popups() -> void:
 
 func _end_game():
 	SaveLoad.clear_save()
+	self._quit_to_menu()
+
+
+func _quit_to_menu():
 	SceneSwitcher.goto_scene(main_menu_scene)
+
+
+func _on_one_off_item_purchased(item_name: String) -> void:
+	match item_name:
+		"Moustache":
+			pet.enable_moustache()
+		"Chemical Probe":
+			pet.enable_probe()
+		_:
+			assert(false, "Unknown one off item: %s" % [item_name])
 
 
 func _on_item_purchased(item_name: String) -> void:
@@ -110,6 +129,8 @@ func _process(_delta):
 		self.active_view_position = clamp(active_view_position + 1, 0, 2)
 	elif Input.is_action_just_pressed("ui_left"):
 		self.active_view_position = clamp(active_view_position - 1, 0, 2)
+	elif Input.is_action_just_pressed("ui_cancel"):
+		self.ui.open_mini_menu()
 
 
 func _on_slider_value_changed(new_val: float) -> void:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/coin.png-f04b9cd408b88aba3ab0966b4da32df0.stex"
+path="res://.import/question_mark_button.png-917982afa791e542e964814e0793fe0b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/coin.png"
-dest_files=[ "res://.import/coin.png-f04b9cd408b88aba3ab0966b4da32df0.stex" ]
+source_file="res://assets/question_mark_button.png"
+dest_files=[ "res://.import/question_mark_button.png-917982afa791e542e964814e0793fe0b.stex" ]
 
 [params]
 

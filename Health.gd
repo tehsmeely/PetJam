@@ -6,6 +6,8 @@ var health_pct := 50.0 setget _set_health_pct
 var velocity := 0.0
 var active_effects = []
 
+var health_bar_visible = false setget _set_health_bar_visible
+
 var health_zone setget _set_health_zone
 
 onready var progress_bar = $ProgressBar
@@ -122,18 +124,6 @@ func _set_health_zone(new_health_zone: int) -> void:
 	health_zone = new_health_zone
 
 
-var save_name = "GamePetHealth"
-
-
-func save() -> Dictionary:
-	return {"health_pct": self.health_pct, "velocity": self.velocity}
-
-
-func load(data: Dictionary) -> void:
-	self.health_pct = data["health_pct"]
-	self.velocity = data["velocity"]
-
-
 func _decrement_health_effects() -> void:
 	var remove_indices = []
 	var i = 0
@@ -175,3 +165,27 @@ func _get_active_effect(effect_name: String) -> float:
 				final = effect.get(effect_name)
 
 	return final
+
+
+func _set_health_bar_visible(hbv: bool) -> void:
+	health_bar_visible = hbv
+	progress_bar.visible = hbv
+
+
+#===============================================================
+
+var save_name = "GamePetHealth"
+
+
+func save() -> Dictionary:
+	return {
+		"health_pct": self.health_pct,
+		"velocity": self.velocity,
+		"health_bar_visible": self.health_bar_visible
+	}
+
+
+func load(data: Dictionary) -> void:
+	self.health_pct = data["health_pct"]
+	self.velocity = data["velocity"]
+	self.health_bar_visible = data["health_bar_visible"]
