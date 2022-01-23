@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 [node name="ProbeShelf" parent="OneOffShelves" instance=ExtResource( 4 )]
 position = Vector2( 0, -193 )
 item_name = "Chemical Probe"
-item_cost = 1.0
+item_cost = 1000.0
 item_description = "This probe allows the baker to get in-depth
 knowledge about the health of the starter"
 item_texture = ExtResource( 5 )
@@ -24,7 +24,7 @@ bought_modulate = Color( 1, 1, 1, 0.501961 )
 [node name="MoustacheShelf" parent="OneOffShelves" instance=ExtResource( 4 )]
 position = Vector2( 144, -193 )
 item_name = "Moustache"
-item_cost = 1.0
+item_cost = 2000.0
 item_description = "A fetching moustache for your starter
 "
 item_texture = ExtResource( 6 )

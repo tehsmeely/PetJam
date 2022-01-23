@@ -7,6 +7,8 @@ signal bread_baked(quality)
 export (float) var min_fill_eye_scale_threshold_pct = 25
 export (float) var eye_top_offset_max = 17
 export (float) var mouth_top_offset_max = 42
+export (float) var moustache_top_offset_max = 32
+export (float) var moustache_scale_mod = 0.6
 export (float) var growth_pct_per_s = 1.0
 export (float) var day_delta = 20.0
 export (float) var bake_fill_usage = 30.0
@@ -19,6 +21,7 @@ onready var eyes_animation_player = $FillLevel/EyesSprite/AnimationPlayer
 onready var blink_timer = $FillLevel/EyesSprite/BlinkTimer
 onready var mouth = $FillLevel/Mouth
 onready var eyes = $FillLevel/EyesSprite
+onready var moustache = $FillLevel/Moustache
 onready var fill_label = $FillLabel
 onready var health = $Health
 onready var name_label = $NameLabel
@@ -169,11 +172,14 @@ func set_fill_level_pct(pct: float) -> void:
 		var scale = pct / min_fill_eye_scale_threshold_pct
 		eyes.scale.y = scale
 		mouth.scale.y = scale
+		moustache.scale.y = scale * moustache_scale_mod
 	else:
 		eyes.scale.y = 1.0
 		mouth.scale.y = 1.0
+		moustache.scale.y = 1.0 * moustache_scale_mod
 	eyes.position.y = eye_top_offset_max * (pct / 100.0)
 	mouth.position.y = mouth_top_offset_max * (pct / 100.0)
+	moustache.position.y = moustache_top_offset_max * (pct / 100.0)
 
 	var mouth_mode = health.get_mouth_mode()
 
@@ -186,6 +192,7 @@ func _set_moustache_visible(mv: bool) -> void:
 	#TODO: Set moustache visible
 	print("MOUSTACH!")
 	moustache_visible = mv
+	moustache.visible = mv
 
 
 var save_name = "GamePet"
