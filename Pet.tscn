@@ -152,9 +152,9 @@ __meta__ = {
 position = Vector2( -69, 0 )
 
 [node name="FeedUI" parent="." instance=ExtResource( 10 )]
-margin_left = -314.0
+margin_left = -297.0
 margin_top = -62.0
-margin_right = -314.0
+margin_right = -297.0
 margin_bottom = -62.0
 
 [node name="NameLabel" type="Label" parent="."]

@@ -407,13 +407,11 @@ __meta__ = {
 }
 
 [node name="Popup" type="Popup" parent="UI/MiniMenu"]
-visible = true
 margin_left = 910.0
 margin_top = 515.0
 margin_right = 1010.0
 margin_bottom = 565.0
 rect_min_size = Vector2( 100, 50 )
-rect_scale = Vector2( 1.2, 1.2 )
 mouse_filter = 2
 popup_exclusive = true
 
@@ -452,6 +450,7 @@ anims/RESET = SubResource( 3 )
 [node name="DebugUI" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="DebugUI"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
