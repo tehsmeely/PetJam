@@ -129,7 +129,7 @@ tracks/3/keys = {
 "values": [ 0.0 ]
 }
 
-[node name="FeedUI" type="Control"]
+[node name="FeedUI" type="Control" groups=["SaveLoad"]]
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {

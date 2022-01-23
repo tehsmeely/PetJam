@@ -47,6 +47,7 @@ func _on_feed_button_pressed() -> void:
 	if not item_texture_animation_player.is_playing() and item_quantities[item_name] > 0:
 		item_texture_animation_player.play("Feed")
 		emit_signal("flour_fed", item_name)
+		item_quantities[item_name] -= 1
 
 
 func _on_right_pressed() -> void:
@@ -77,3 +78,21 @@ func _apply_current_item_index() -> void:
 	name_label.text = item_names[current_item_index]
 	qty_label.text = str(item_quantities[item_names[current_item_index]])
 	item_texture.self_modulate = item_colours[current_item_index]
+
+
+var save_name = "GameFeedUi"
+
+
+func save() -> Dictionary:
+	return {"quantities": self.item_quantities.duplicate()}
+
+
+func load(data: Dictionary) -> void:
+	self.item_names = []
+	self.item_colours = []
+	var qty_data = data["quantities"]
+	for item_name in qty_data.keys():
+		item_names.append(item_name)
+		item_colours.append(HealthEffect.colour_of_flour(item_name))
+
+	self.item_quantities = qty_data.duplicate()
