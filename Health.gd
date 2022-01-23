@@ -12,7 +12,7 @@ onready var progress_bar = $ProgressBar
 
 
 func _ready():
-	pass
+	self.health_pct = self.health_pct
 
 
 func end_of_day(day_delta: float) -> void:

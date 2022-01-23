@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/smooth-lovin-by-kevin-macleod-from-filmmusic-io.mp3-9ba8c95d1f3ae89ea940f3e47f3b9eeb.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/music/smooth-lovin-by-kevin-macleod-from-filmmusic-io.mp3"
+dest_files=[ "res://.import/smooth-lovin-by-kevin-macleod-from-filmmusic-io.mp3-9ba8c95d1f3ae89ea940f3e47f3b9eeb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

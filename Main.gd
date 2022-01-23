@@ -27,7 +27,7 @@ func _ready():
 	var _err1 = slider.connect("value_changed", self, "_on_slider_value_changed")
 	_on_slider_value_changed(slider.value)
 
-	var _err2 = feed_button.connect("pressed", pet, "feed")
+	var _err2 = feed_button.connect("pressed", pet, "debug_feed")
 	var _err3 = bake_button.connect("pressed", self, "_on_bake_button_pressed")
 	var err4 = sleep_button.connect("pressed", self, "end_of_day")
 	Global.handle_connect_error(err4)
@@ -43,11 +43,23 @@ func _ready():
 	self._on_viewport_size_changed()
 
 	var err7 = shop.connect("item_purchased", self, "_on_item_purchased")
+	Global.handle_connect_error(err7)
+
+	#signal overflow_occured
+	#signal empty_occured
+	#signal bread_baked(quality)
+	var err8 = pet.connect("overflow_occured", self, "_on_pet_overflow")
+	Global.handle_connect_error(err8)
+	var err9 = pet.connect("empty_occured", self, "_on_pet_empty")
+	Global.handle_connect_error(err9)
+	var err10 = pet.connect("bread_baked", self, "_on_bread_baked")
+	Global.handle_connect_error(err10)
 
 	pet.set_name(GameState.starter_name)
 
 	print("Main Ready")
 	GameState.reload()
+	MusicPlayer.set_mode(MusicPlayer.MusicMode.GAME)
 
 
 func _on_item_purchased(item_name: String) -> void:
@@ -85,14 +97,20 @@ func _on_slider_value_changed(new_val: float) -> void:
 	pet.set_fill_level_pct(new_val)
 
 
+func _on_pet_overflow() -> void:
+	pass
+
+
+func _on_pet_empty() -> void:
+	pass
+
+
 func _on_bake_button_pressed():
-	if pet.fill_level_pct > 20.0:
-		bake_bread(pet.get_quality())
+	pet.debug_bake()
 
 
-func bake_bread(quality: int) -> void:
+func _on_bread_baked(quality: int) -> void:
 	inventory.add_bread(quality)
-	pet.fill_level_pct -= 20.0
 
 
 func end_of_day() -> void:

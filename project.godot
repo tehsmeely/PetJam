@@ -30,6 +30,7 @@ Global="*res://Global.gd"
 GameState="*res://GameState.gd"
 SceneSwitcher="*res://SceneSwitcher.gd"
 SaveLoad="*res://SaveLoad.gd"
+MusicPlayer="*res://MusicPlayer.tscn"
 
 [display]
 

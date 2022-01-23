@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/jazz-brunch--by-kevin-macleod-from-filmmusic-io.mp3-fcafc78eda8884d943b222f08afc8b84.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/music/jazz-brunch--by-kevin-macleod-from-filmmusic-io.mp3"
+dest_files=[ "res://.import/jazz-brunch--by-kevin-macleod-from-filmmusic-io.mp3-fcafc78eda8884d943b222f08afc8b84.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

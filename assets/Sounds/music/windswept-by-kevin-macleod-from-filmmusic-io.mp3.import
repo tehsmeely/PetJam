@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/windswept-by-kevin-macleod-from-filmmusic-io.mp3-d3daedc540e4ed990cee7b9d7d102f58.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/music/windswept-by-kevin-macleod-from-filmmusic-io.mp3"
+dest_files=[ "res://.import/windswept-by-kevin-macleod-from-filmmusic-io.mp3-d3daedc540e4ed990cee7b9d7d102f58.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

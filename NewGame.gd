@@ -23,6 +23,8 @@ func _ready():
 	var err3 = back_button.connect("pressed", self, "_on_back_button")
 	Global.handle_connect_error(err3)
 
+	MusicPlayer.set_mode(MusicPlayer.MusicMode.MENU)
+
 
 func _on_randomise_button() -> void:
 	text_box.text = _pick_random_name()

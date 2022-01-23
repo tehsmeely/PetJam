@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/521118__smand__wood-burning-in-the-stove.wav-908f747f96b3a0fc5e61da58475a9cbc.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/521118__smand__wood-burning-in-the-stove.wav"
+dest_files=[ "res://.import/521118__smand__wood-burning-in-the-stove.wav-908f747f96b3a0fc5e61da58475a9cbc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

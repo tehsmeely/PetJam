@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://BuyShelf.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shop.gd" type="Script" id=2]
+[ext_resource path="res://assets/Sounds/201159__kiddpark__cash-register.noloop.tres" type="AudioStream" id=3]
 
 [node name="Shop" type="Node2D" groups=["SaveLoad"]]
 script = ExtResource( 2 )
@@ -29,3 +30,8 @@ item_cost_max = 100.0
 stock_max = 1
 
 [node name="CameraPos" type="Position2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+bus = "SFXBus"

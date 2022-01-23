@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var shelves = $Shelves
+onready var sfx_player = $AudioStreamPlayer
 
 signal item_purchased(name)
 
@@ -23,6 +24,7 @@ func camera_pos_x_offset() -> float:
 
 func _on_shelf_purchased(name: String) -> void:
 	print("item_purchased", name)
+	sfx_player.play()
 	emit_signal("item_purchased", name)
 
 

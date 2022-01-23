@@ -2,12 +2,14 @@ extends Node2D
 
 signal overflow_occured
 signal empty_occured
+signal bread_baked(quality)
 
 export (float) var min_fill_eye_scale_threshold_pct = 25
 export (float) var eye_top_offset_max = 17
 export (float) var mouth_top_offset_max = 42
 export (float) var growth_pct_per_s = 1.0
 export (float) var day_delta = 20.0
+export (float) var bake_fill_usage = 30.0
 
 var fill_level_pct := 50.0 setget set_fill_level_pct
 var update_cull = 0
@@ -20,6 +22,9 @@ onready var fill_label = $FillLabel
 onready var health = $Health
 onready var name_label = $NameLabel
 onready var feed_ui = $FeedUI
+onready var feed_sound = $Audio/FeedSound
+onready var bake_sound = $Audio/BakeSound
+onready var bake_button = $BakeButton
 
 onready var fill_max_pos = $FillMax
 onready var fill_min_pos = $FillMin
@@ -31,8 +36,12 @@ onready var eyes_offset = $FillLevel/EyesSprite.position.y
 
 
 func _ready():
-	var _err = blink_timer.connect("timeout", eyes_animation_player, "play", ["blink"])
+	var err = blink_timer.connect("timeout", eyes_animation_player, "play", ["blink"])
+	Global.handle_connect_error(err)
 	var err2 = feed_ui.connect("flour_fed", self, "_on_flour_fed")
+	Global.handle_connect_error(err2)
+	var err3 = bake_button.connect("pressed", self, "_on_bake_button")
+	Global.handle_connect_error(err3)
 
 
 # Not currently using this function, growth is Day only for now
@@ -66,9 +75,25 @@ func _on_flour_fed(flour_name: String) -> void:
 	var flour_effect = HealthEffect.health_effect_of_name(flour_name)
 	self.fill_level_pct += 20.0
 	self.health.add_effect(flour_effect)
+	self.feed_sound.play()
 
 
-func feed() -> void:
+func _on_bake_button() -> void:
+	if self.fill_level_pct > self.bake_fill_usage:
+		_on_actually_bake()
+
+
+func _on_actually_bake() -> void:
+	self.bake_sound.play()
+	self.fill_level_pct -= self.bake_fill_usage
+	emit_signal("bread_baked", self.get_quality())
+
+
+func debug_bake() -> void:
+	self._on_bake_button()
+
+
+func debug_feed() -> void:
 	self.fill_level_pct += 20.0
 	self.health.boost(20.0)
 
@@ -109,7 +134,7 @@ func get_quality() -> int:
 		Global.HealthZone.GOLD:
 			return Global.Quality.HIGH
 		_:
-			assert(false, "Invalid HealthZone from health")
+			assert(false, "Invalid HealthZone from health: %d" % [self.health.health_zone])
 			return 0
 
 

@@ -7,6 +7,13 @@ export (NodePath) var high_quality_shelf_node
 onready var low_quality_shelf = get_node(low_quality_shelf_node)
 onready var medium_quality_shelf = get_node(medium_quality_shelf_node)
 onready var high_quality_shelf = get_node(high_quality_shelf_node)
+onready var sfx_player = $AudioStreamPlayer
+
+
+func _ready():
+	for shelf in [low_quality_shelf, medium_quality_shelf, high_quality_shelf]:
+		var err = shelf.connect("bread_sold", self, "_on_bread_sold")
+		Global.handle_connect_error(err)
 
 
 func end_of_day() -> void:
@@ -14,6 +21,10 @@ func end_of_day() -> void:
 	low_quality_shelf.randomise_price()
 	medium_quality_shelf.randomise_price()
 	high_quality_shelf.randomise_price()
+
+
+func _on_bread_sold() -> void:
+	sfx_player.play()
 
 
 func camera_pos_x_offset() -> float:

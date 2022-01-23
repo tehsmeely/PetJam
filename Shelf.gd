@@ -2,6 +2,8 @@ extends Node2D
 
 enum Quality { LOW, MEDIUM, HIGH }
 
+signal bread_sold
+
 export (PackedScene) var bread_scene
 export (float) var bread_offset = 12.0
 export (Quality) var quality = Quality.MEDIUM
@@ -53,6 +55,7 @@ func _sell_bread():
 		bread.queue_free()
 		self.bread_count -= 1
 		GameState.gold += price
+		emit_signal("bread_sold")
 
 
 func _update_label() -> void:

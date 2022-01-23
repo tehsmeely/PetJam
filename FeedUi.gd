@@ -48,6 +48,7 @@ func _on_feed_button_pressed() -> void:
 		item_texture_animation_player.play("Feed")
 		emit_signal("flour_fed", item_name)
 		item_quantities[item_name] -= 1
+		_apply_current_item_index()
 
 
 func _on_right_pressed() -> void:
