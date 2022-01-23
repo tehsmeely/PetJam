@@ -27,7 +27,11 @@ func _ready():
 
 
 func _on_randomise_button() -> void:
-	text_box.text = _pick_random_name()
+	var new_name = _pick_random_name()
+	if new_name == text_box.text:
+		#One re-try to knock out most re-pick cases
+		new_name = _pick_random_name()
+	text_box.text = new_name
 
 
 func _on_play_button() -> void:

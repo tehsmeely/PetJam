@@ -2,6 +2,7 @@ extends Node2D
 
 onready var shelves = $Shelves
 onready var sfx_player = $AudioStreamPlayer
+onready var info_popup = $CanvasLayer/CenterContainer/AcceptDialog
 
 signal item_purchased(name)
 
@@ -9,6 +10,9 @@ signal item_purchased(name)
 func _ready():
 	for shelf in shelves.get_children():
 		shelf.connect("purchased", self, "_on_shelf_purchased")
+		shelf.connect("info_popup", self, "_on_shelf_window_popup")
+
+	info_popup.get_close_button().visible = false
 
 
 func end_of_day() -> void:
@@ -20,6 +24,14 @@ func end_of_day() -> void:
 
 func camera_pos_x_offset() -> float:
 	return get_node("CameraPos").position.x
+
+
+func _on_shelf_window_popup(name: String) -> void:
+	print("info popup")
+	var info = HealthEffect.description_of_name(name)
+	info_popup.dialog_text = info
+	info_popup.window_title = name
+	info_popup.popup()
 
 
 func _on_shelf_purchased(name: String) -> void:

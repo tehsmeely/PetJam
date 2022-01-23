@@ -21,6 +21,7 @@ onready var popup_overflow = $UI/OverflowPopup/AcceptDialog
 onready var popup_emptyloss = $UI/EmptyLossPopup/AcceptDialog
 onready var audio_overflow = $Audio/Overflow
 onready var audio_emptyloss = $Audio/EmptyLoss
+onready var audio_night = $Audio/Night
 onready var ui = $UI
 
 var active_view_position = 0 setget _set_active_view_position
@@ -57,6 +58,9 @@ func _ready():
 	Global.handle_connect_error(err9)
 	var err10 = pet.connect("bread_baked", self, "_on_bread_baked")
 	Global.handle_connect_error(err10)
+
+	var err11 = ui.connect("sleep_button_pressed", self, "end_of_day")
+	Global.handle_connect_error(err11)
 
 	pet.set_name(GameState.starter_name)
 
@@ -141,6 +145,7 @@ func _on_bread_baked(quality: int) -> void:
 
 
 func end_of_day() -> void:
+	audio_night.play()
 	night_transition_animation.play("FadeOutFadeIn")
 	GameState.day += 1
 

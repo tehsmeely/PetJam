@@ -35,3 +35,22 @@ stock_max = 1
 stream = ExtResource( 3 )
 volume_db = -10.0
 bus = "SFXBus"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptDialog" type="AcceptDialog" parent="CanvasLayer/CenterContainer"]
+margin_left = 810.0
+margin_top = 470.0
+margin_right = 1110.0
+margin_bottom = 610.0
+rect_min_size = Vector2( 300, 140 )
+window_title = "Info"
+dialog_autowrap = true

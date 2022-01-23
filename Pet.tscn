@@ -51,7 +51,7 @@ tracks/0/keys = {
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 64, 0, 64, 64 )
 
 [node name="Pet" type="Node2D" groups=["SaveLoad"]]
 script = ExtResource( 5 )

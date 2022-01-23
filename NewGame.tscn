@@ -57,7 +57,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-random_names = [ "Lord Sour-on", "John Dough", "Souruman" ]
+random_names = [ "Lord Sour-on", "John Dough", "Souruman", "Marlon Bran-dough", "Dr Dough-little", "Bread Pitt", "Herculyeast", "Scooby Dough", "Doughlores", "Doughlene", "Doughbi-Wan Kenobi" ]
 game_scene = "res://Main.tscn"
 
 [node name="TileMap" type="TileMap" parent="."]

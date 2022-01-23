@@ -1,6 +1,7 @@
 extends Node2D
 
 signal purchased(name)
+signal info_popup(name)
 
 export (String) var item_name
 export (float) var item_cost_min
@@ -12,6 +13,8 @@ onready var tooltip_question_mark = $Panel
 onready var flour = $Flour
 onready var buy_button = $Button
 onready var stock = stock_max setget _set_stock
+onready var help_dialog = $AcceptDialog
+onready var help_button = $HelpButton
 
 var item_cost
 var rng = RandomNumberGenerator.new()
@@ -25,6 +28,16 @@ func _ready():
 	tooltip_question_mark.hint_tooltip = HealthEffect.description_of_name(item_name)
 	var _err = buy_button.connect("pressed", self, "_on_buy_button_pressed")
 	_update_label_text()
+
+	help_dialog.get_close_button().visible = false
+	help_dialog.dialog_text = HealthEffect.description_of_name(item_name)
+
+	var err2 = help_button.connect("pressed", self, "_on_help_button")
+	Global.handle_connect_error(err2)
+
+
+func _on_help_button() -> void:
+	emit_signal("info_popup", self.item_name)
 
 
 func _update_label_text() -> void:

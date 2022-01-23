@@ -2,22 +2,9 @@
 
 
 Critical:
-* Save/Load Game State
-* Pet EOD Process
-	* Update fill level, health, based on day 
 * Flour Effects
-	* Temporary effects from different flours
 	* Display Effects
-* Sound Effects
-	* music DONE
-	* feed DONE
-	* bake DONE
-	* sell DONE
-	* buy DONE
-	* overflow DONE
-	* empty DONE
-	
-
+* Fix Flour Info tooltips
 
 
 Nice To Have
