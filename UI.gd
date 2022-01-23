@@ -42,11 +42,19 @@ func _ready():
 
 
 func _on_mm_quit_button() -> void:
+	print("quit")
 	emit_signal("quit_to_menu")
 
 
 func open_mini_menu() -> void:
 	mini_menu.popup()
+
+
+func toggle_mini_menu() -> void:
+	if mini_menu.visible:
+		mini_menu.visible = false
+	else:
+		open_mini_menu()
 
 
 func open_help_dialog() -> void:

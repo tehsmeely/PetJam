@@ -88,6 +88,7 @@ func _end_game():
 
 
 func _quit_to_menu():
+	print("quit")
 	SceneSwitcher.goto_scene(main_menu_scene)
 
 
@@ -130,7 +131,7 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("ui_left"):
 		self.active_view_position = clamp(active_view_position - 1, 0, 2)
 	elif Input.is_action_just_pressed("ui_cancel"):
-		self.ui.open_mini_menu()
+		self.ui.toggle_mini_menu()
 
 
 func _on_slider_value_changed(new_val: float) -> void:

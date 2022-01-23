@@ -3,15 +3,15 @@ extends Node
 signal gold_changed(new_gold)
 signal day_changed(new_day)
 
-var gold := 0.0 setget _set_gold
-var day := 0 setget _set_day
+var gold := 30.0 setget _set_gold
+var day := 1 setget _set_day
 
 var starter_name = ""
 
 
 func reload() -> void:
-	self.gold = 100.0
-	self.day = 0
+	self.gold = self.gold
+	self.day = self.day
 
 
 func _set_gold(new_gold: float) -> void:
