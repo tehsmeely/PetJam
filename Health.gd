@@ -17,6 +17,7 @@ func _ready():
 
 func end_of_day(day_delta: float) -> void:
 	delayed_process(day_delta)
+	_decrement_health_effects()
 
 
 func delayed_process(delta):
@@ -133,7 +134,7 @@ func load(data: Dictionary) -> void:
 	self.velocity = data["velocity"]
 
 
-func _update_health_effects() -> void:
+func _decrement_health_effects() -> void:
 	var remove_indices = []
 	var i = 0
 	for effect in self.active_effects:
