@@ -57,6 +57,7 @@ region = Rect2( 64, 0, 64, 64 )
 [node name="Pet" type="Node2D" groups=["SaveLoad"]]
 script = ExtResource( 5 )
 min_fill_eye_scale_threshold_pct = 30.0
+bake_fill_usage = 20.0
 
 [node name="JarSprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -131,7 +132,7 @@ __meta__ = {
 
 [node name="Health" type="Node2D" parent="." groups=["SaveLoad"]]
 script = ExtResource( 9 )
-acceleration = -2.0
+acceleration = -1.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Health"]
 visible = false

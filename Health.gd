@@ -43,6 +43,14 @@ func boost(boost_velocity: float) -> void:
 
 
 func add_effect(effect: Dictionary) -> void:
+	if effect["health_pct_impact_on_feed"] != null:
+		print("Updating pct: %d + %d" % [self.health_pct, effect["health_pct_impact_on_feed"]])
+		self.health_pct = clamp(self.health_pct + effect["health_pct_impact_on_feed"], 0, 100.0)
+	if effect["health_velocity_impact_on_feed"] != null:
+		print(
+			"Updating velocity: %d + %d" % [self.velocity, effect["health_velocity_impact_on_feed"]]
+		)
+		self.velocity = clamp(self.velocity + effect["health_velocity_impact_on_feed"], 0, 100.0)
 	self.active_effects.append(effect)
 
 

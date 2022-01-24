@@ -47,7 +47,7 @@ func _on_mm_quit_button() -> void:
 
 
 func open_mini_menu() -> void:
-	mini_menu.popup()
+	mini_menu.popup_centered()
 
 
 func toggle_mini_menu() -> void:
@@ -58,7 +58,7 @@ func toggle_mini_menu() -> void:
 
 
 func open_help_dialog() -> void:
-	help_dialog.popup()
+	help_dialog.popup_centered()
 
 
 func close_mini_menu() -> void:

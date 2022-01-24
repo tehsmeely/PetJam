@@ -41,7 +41,7 @@ func _on_shelf_window_popup(name: String) -> void:
 func _do_info_popup(title: String, text: String) -> void:
 	info_popup.dialog_text = text
 	info_popup.window_title = title
-	info_popup.popup()
+	info_popup.popup_centered()
 
 
 func _on_shelf_purchased(name: String) -> void:

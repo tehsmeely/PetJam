@@ -108,7 +108,7 @@ func _on_item_purchased(item_name: String) -> void:
 
 func _on_show_health_button() -> void:
 	popup.dialog_text = pet.health.debug_string()
-	popup.popup()
+	popup.popup_centered()
 
 
 func _on_viewport_size_changed() -> void:
@@ -140,7 +140,7 @@ func _on_slider_value_changed(new_val: float) -> void:
 
 
 func _on_pet_overflow() -> void:
-	popup_overflow.popup()
+	popup_overflow.popup_centered()
 	audio_overflow.play()
 
 
@@ -154,7 +154,7 @@ func _on_overflow_confirmed() -> void:
 
 
 func _on_pet_empty() -> void:
-	popup_emptyloss.popup()
+	popup_emptyloss.popup_centered()
 	audio_emptyloss.play()
 
 

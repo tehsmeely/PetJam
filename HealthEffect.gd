@@ -11,7 +11,8 @@ static func make_health_effect(
 	health_pct_modifier,
 	set_growth_rate,
 	set_health_pct,
-	health_pct_impact_on_feed
+	health_pct_impact_on_feed,
+	health_velocity_impact_on_feed
 ) -> Dictionary:
 	## All values other than duration are nullable
 	return {
@@ -20,7 +21,8 @@ static func make_health_effect(
 		"health_pct_modifier": health_pct_modifier,
 		"set_growth_rate": set_growth_rate,
 		"set_min_health_pct": set_health_pct,
-		"health_pct_impact_on_feed": health_pct_impact_on_feed
+		"health_pct_impact_on_feed": health_pct_impact_on_feed,
+		"health_velocity_impact_on_feed": health_velocity_impact_on_feed
 	}
 
 static func colour_of_flour(name: String) -> Color:
@@ -53,13 +55,13 @@ static func description_of_name(name: String) -> String:
 static func health_effect_of_name(name: String) -> Dictionary:
 	match name:
 		"Wheat":
-			return make_health_effect(0, null, null, null, null, null)
+			return make_health_effect(0, null, null, null, null, 30.0, 30.0)
 		"Rye":
-			return make_health_effect(2, null, null, null, 31.0, null)
+			return make_health_effect(2, null, null, null, 31.0, -20.0, -2.5)
 		"Spelt":
-			return make_health_effect(3, null, 1.10, null, null, null)
+			return make_health_effect(3, null, 1.10, null, null, 20.0, 10.0)
 		"Bere":
-			return make_health_effect(2, 1.5, null, null, null, -20.0)
+			return make_health_effect(2, 1.5, null, null, null, -20.0, 10.0)
 		_:
 			assert(false, "Unknown flour name for health effect %s" % [name])
-			return make_health_effect(0, null, null, null, null, null)
+			return make_health_effect(0, null, null, null, null, null, null)

@@ -5,6 +5,7 @@ Critical:
 * Flour Effects
 	* Display Effects
 * Fix Flour Info tooltips
+* Back Button on NewGame doesnt work
 
 
 Nice To Have
