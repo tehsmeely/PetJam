@@ -31,7 +31,7 @@ func _ready():
 
 
 func _on_new_game_button() -> void:
-	SceneSwitcher.goto_scene(new_game_scene)
+	SceneSwitcher.push_scene(new_game_scene)
 
 
 func _on_continue_button() -> void:

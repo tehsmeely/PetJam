@@ -59,6 +59,7 @@ __meta__ = {
 }
 random_names = [ "Lord Sour-on", "John Dough", "Souruman", "Marlon Bran-dough", "Dr Dough-little", "Bread Pitt", "Herculyeast", "Scooby Dough", "Doughlores", "Doughlene", "Doughbi-Wan Kenobi" ]
 game_scene = "res://Main.tscn"
+main_menu_scene = "res://MainMenu.tscn"
 
 [node name="TileMap" type="TileMap" parent="."]
 modulate = Color( 0.584314, 0.556863, 0.478431, 1 )

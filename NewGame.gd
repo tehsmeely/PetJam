@@ -3,6 +3,7 @@ extends Control
 export (Array, String) var random_names = ["Sourdough"]
 
 export (String, FILE, "*.tscn,*.scn") var game_scene = null
+export (String, FILE, "*.tscn,*.scn") var main_menu_scene = null
 
 var rng = RandomNumberGenerator.new()
 
@@ -41,8 +42,7 @@ func _on_play_button() -> void:
 
 
 func _on_back_button() -> void:
-	SceneSwitcher.pop()
-	pass
+	SceneSwitcher.goto_scene(main_menu_scene)
 
 
 func _pick_random_name() -> String:

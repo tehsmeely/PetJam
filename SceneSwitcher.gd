@@ -19,7 +19,7 @@ func goto_scene_and_load(path):
 
 
 func push_scene(path):
-	call_deferred("_deferred_goto_scene", path, true)
+	call_deferred("_deferred_goto_scene", path, true, false)
 
 
 func _deferred_goto_scene(path, save: bool, call_load_after: bool) -> void:
